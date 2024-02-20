@@ -9,6 +9,7 @@ services:
             - extensions:/stable-diffusion/stable-diffusion-webui/extensions
         ports:
             - 7860:7860
+        restart: always
         deploy:
             resources:
                 reservations:
