@@ -3,6 +3,8 @@ FROM debian:stable-slim
 RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive PIP_PREFER_BINARY=1 PIP_BREAK_SYSTEM_PACKAGES=1
 RUN apt-get -qq install wget curl git python3 python3-venv python3-pip libgl1 libglib2.0-0
+RUN git config --global advice.detachedHead false
+RUN apt-get install --no-install-recommends google-perftools -y
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
@@ -28,6 +30,5 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install -r requirements_versions.txt
 RUN pip3 install -U numpy
 RUN pip3 install xformers
-RUN git config --global advice.detachedHead false
 
 CMD ["./webui.sh", "-f", "--xformers", "--listen"]
