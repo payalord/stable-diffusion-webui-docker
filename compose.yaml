@@ -7,6 +7,8 @@ services:
         volumes:
             - models:/stable-diffusion/stable-diffusion-webui/models
             - extensions:/stable-diffusion/stable-diffusion-webui/extensions
+            - embeddings:/stable-diffusion/stable-diffusion-webui/embeddings
+            - localizations:/stable-diffusion/stable-diffusion-webui/localizations
         ports:
             - 7860:7860
         restart: always
@@ -30,3 +32,15 @@ volumes:
             type: none
             o: bind
             device: ./extensions
+    embeddings:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: ./embeddings
+    localizations:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: ./localizations
