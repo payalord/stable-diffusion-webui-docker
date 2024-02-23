@@ -30,5 +30,13 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install -r requirements_versions.txt
 RUN pip3 install -U numpy
 RUN pip3 install xformers
+RUN pip3 install lycoris_lora
 
-CMD ["./webui.sh", "-f", "--xformers", "--listen"]
+# Custom useful extensions
+RUN git clone https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
+RUN git clone https://github.com/fkunn1326/openpose-editor.git extensions/openpose-editor
+RUN git clone https://github.com/KohakuBlueleaf/a1111-sd-webui-lycoris.git extensions/a1111-sd-webui-lycoris
+RUN git clone https://github.com/richrobber2/canvas-zoom.git extensions/canvas-zoom
+RUN git clone https://github.com/butaixianran/Stable-Diffusion-Webui-Civitai-Helper.git
+
+CMD ["./webui.sh", "-f", "--xformers", "--listen", "--enable-insecure-extension-access"]
