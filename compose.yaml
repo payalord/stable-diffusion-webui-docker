@@ -25,22 +25,22 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: ./models
+            device: ${PWD}/models
     extensions:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: ./extensions
+            device: ${PWD}/extensions
     embeddings:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: ./embeddings
+            device: ${PWD}/embeddings
     localizations:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: ./localizations
+            device: ${PWD}/localizations
