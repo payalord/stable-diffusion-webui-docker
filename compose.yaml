@@ -9,6 +9,7 @@ services:
             - extensions:/stable-diffusion/stable-diffusion-webui/extensions
             - embeddings:/stable-diffusion/stable-diffusion-webui/embeddings
             - localizations:/stable-diffusion/stable-diffusion-webui/localizations
+            - outputs:/stable-diffusion/stable-diffusion-webui/outputs
         ports:
             - 7860:7860
         restart: always
@@ -44,3 +45,9 @@ volumes:
             type: none
             o: bind
             device: ${PWD}/localizations
+    outputs:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: ${PWD}/outputs
